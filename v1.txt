@@ -1,0 +1,36 @@
+ * It tries to simplify (reduce) a given quantum circuit by randomly selecting subsequences of gates and checking 
+    if they can be replaced by shorter equivalent subsequences — effectively doing circuit compression by random search.
+ * random_subsequence(circuit, length)
+
+Selects a random slice (start and end indices) of a given circuit’s gate list.
+
+* is_equivalent(circ1, circ2, tol=1e-5)
+
+Compares two circuits by checking if their unitary matrices are equivalent up to global phase, using qiskit.quantum_info.Operator.
+
+random_search_reduce(circuit, max_iters=20)
+
+Core reduction loop:
+
+Randomly picks subsequences of gates (2–5 long).
+
+Builds a smaller candidate (either empty or a few random CX/CZ gates).
+
+If the candidate is unitarily equivalent to the subsequence, it replaces the original subsequence with the candidate.
+
+Logs every successful replacement.
+
+Runs for up to max_iters iterations or until the circuit becomes too small.
+
+
+
+* Run:
+Creates a 7-qubit test circuit with several redundant cx (CNOT) gates.
+
+Prints the original circuit depth.
+
+Calls random_search_reduce(qc, max_iters=30) to reduce it.
+
+Prints the reduced circuit depth and both circuit structures.
+
+Displays a visual comparison using the function from V1_lib.py.

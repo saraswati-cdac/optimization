@@ -1,0 +1,20 @@
+This version implements a database-based quantum circuit optimizer.
+It builds a small lookup table of unitaries (matrices) and their shortest equivalent circuits, then uses that database 
+to simplify input circuits by replacing them with shorter versions that perform the same operation.
+V2_lib.py introduces a deterministic, database-based quantum circuit optimizer — an improvement over V1, which used random search.
+It’s more structured and reproducible but limited to single-qubit circuits and small gate sets.
+
+Defines a tiny gate library with only Hadamard (H) and Pauli-X gates.
+
+Operates on single-qubit circuits.
+
+
+* The lookup table (a Python dictionary in your code) stores:
+
+Key: the unitary matrix (converted to bytes)
+
+Value: the shortest circuit that produces that unitary
+
+So it’s like a ready-made dictionary of known transformations and their simplest versions.
+
+

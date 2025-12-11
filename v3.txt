@@ -1,0 +1,5 @@
+* V3 uses a machine learning–assisted quantum circuit optimizer.
+It builds a database of small circuits (using H and X gates) and trains a Random Forest model to predict if a circuit can be simplified.
+During reduction, the ML model first checks whether a subcircuit is likely reducible before doing a database lookup.
+This makes the process smarter and faster than V2, which checked everything blindly.
+Finally, it shows the original and reduced circuits side by side for comparison.
